@@ -2,7 +2,7 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="Application" />
+    <movie outputType="CustomBuild" />
     <movie input="" />
     <movie path="project.xml" />
     <movie fps="0" />
@@ -16,20 +16,24 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\3,0,6" />
+    <class path="C:\HaxeToolkit\haxe\lib\lime\2,4,1" />
+    <class path="C:\HaxeToolkit\haxe\lib\actuate\1,8,5" />
     <class path="src" />
+    <class path="bin\windows\neko\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="" />
+    <option directives="openfl=3.0.6&#xA;lime=2.4.1&#xA;actuate=1.8.5&#xA;openfl-next&#xA;tools=2.4.1&#xA;no-compilation&#xA;native&#xA;lime-native&#xA;openfl-native&#xA;windows&#xA;desktop" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="Main" />
+    <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="" />
+    <option additional="--remap flash:openfl&#xA;#--macro keep(&quot;Main&quot;)&#xA;-debug " />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
-    <library name="nme" />
+    <!-- example: <library name="..." /> -->
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
@@ -37,10 +41,10 @@
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
-    <!-- example: <hidden path="..." /> -->
+    <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand />
+  <preBuildCommand>"$(CompilerPath)/haxelib" run lime build "$(OutputFile)" $(TargetBuild) -$(BuildConfig) -Dfdb</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
