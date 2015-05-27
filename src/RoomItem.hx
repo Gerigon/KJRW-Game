@@ -1,4 +1,4 @@
-package src;
+package ;
 
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
@@ -34,7 +34,7 @@ class RoomItem extends Sprite
 	{
 		type = ItemType.Coal;
 		ImageBitmap = new Bitmap();
-		iItem = new InventoryItem(type);
+		iItem = new InventoryItem(0);
 		
 		addEventListener(MouseEvent.MOUSE_DOWN, Clicked);
 		
