@@ -2,23 +2,35 @@ package;
 
 import openfl.display.Sprite;
 import openfl.Lib;
+import src.RoomLoader;
+
+import src.RoomItem;
+import src.Inventory;
+import src.InventoryItem;
 
 /**
  * ...
- * @author Rutger S
+ * @author Erik de Vries
  */
-
+ 
 class Main extends Sprite 
 {
-
-	var UI:Interface;
+	public static var inventory:Inventory = new Inventory();
+	private var roomLoader:RoomLoader = new RoomLoader();
+	
 	public function new() 
 	{
 		super();
-		UI = new Interface();
-		addChild(UI);
-		trace("test " + UI);
-		// Assets:
-		// openfl.Assets.getBitmapData("img/assetname.jpg");
+		
+		addChild(roomLoader);
+		
+		//var coal:RoomItem = new RoomItem();
+		inventory = new Inventory();
+		
+		//addChild(coal);
+		addChild(inventory);
+		
+		
+		//inventory.AddItem(coal.iItem);
 	}
 }
